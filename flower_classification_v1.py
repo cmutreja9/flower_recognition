@@ -318,10 +318,11 @@ def predictImage(im_path,model,label_dict):
     
     im = pre_processing(im_path)
     
-    im = np.ndarray([im])
+    im = np.array([im])
     preds = model.predict(im)
     
-    pred = label_dict[np.argmax(preds)]   
+    
+    pred = label_dict[str(np.argmax(preds))]   
     print("The class of given image is {}.".format(pred))
     
     
