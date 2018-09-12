@@ -24,14 +24,14 @@ def main():
     ../categories/category3
                 
     """
-    data_dir = '' #provide path for raw data dir(catgories).
-    save_dir = '' #provide path for saving npz data.
+    data_dir = 'C:/Users/Chiku/Downloads/flowers-recognition/flowers/' #provide path for raw data dir(catgories).
+    save_dir = 'C:/Machine Learning/Work/test' #provide path for saving npz data.
 
-    model_name = '' #provide     
+    model_name = 'v3' #provide     
     
     save_np_data(data_dir,save_dir,model_name)    
     train(save_dir,model_name)
-    test(save_dir,save_dir,model_name)
+    test(save_dir,model_name)
 
 
 def pre_processing(im_path,size=(128,128)):
@@ -141,7 +141,7 @@ def save_np_data(data_dir,save_dir,save_name,im_size=(128,128,3),
     save_path_train = os.path.join(save_dir,save_name+'_train')
     save_path_test = os.path.join(save_dir,save_name+'_test')
     
-    print(X_train.shape,save_path_train)
+    
     
     np.savez(save_path_train,X_train=X_train,Y_train=Y_train,Z=Z)
     np.savez(save_path_test,X_test=X_test,Y_test = Y_test,Z=Z)
@@ -280,7 +280,7 @@ def test(data_dir,model_name,plot=True):
         y_true = np.argmax(Y,axis=1)
         y_pred = pred_Y
         
-        print(y_true.shape)
+        
         
         cm = confusion_matrix(y_true=y_true,
                                 y_pred=y_pred,
@@ -326,7 +326,8 @@ def predictImage(im_path,model,label_dict):
     print("The class of given image is {}.".format(pred))
     
     
-    
+if __name__ == '__main__':
+    main()   
     
     
     
